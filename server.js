@@ -6,4 +6,6 @@ const express = require('express');
 
 const app = express();
 
+app.get('/', (req, res) => res.json({ msg: 'Hello, from Contact Keeper!' }));
+
 app.listen(PORT, () => console.log(`Server started listening on port ${PORT}`));
