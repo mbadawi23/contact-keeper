@@ -9,6 +9,9 @@ const app = express();
 
 connectDB();
 
+// Init Midleweare
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.json({ msg: 'Hello, from Contact Keeper!' }));
 
 // Define routes
