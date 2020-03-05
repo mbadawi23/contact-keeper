@@ -7,12 +7,25 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User');
 
+const auth = require('../middleware/auth');
+
 // @route       GET api/auth
 // @desc        Get logged in user
 // @access      Private
-router.get('/', (req, res) => {
+router.get('/', auth, async (req, res) => {
   // The slash here referes to 'api/users'. Defined by route in server.js
-  res.send('Get a logged in user.');
+
+  // This is a protected route. We need to use the middleware function to access it.
+
+  try {
+    // Find user in db, return it minuse the password
+    const user = await User.findById(req.user.id).select('-password');
+
+    res.json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server Error.');
+  }
 });
 
 // @route       POST api/auth
