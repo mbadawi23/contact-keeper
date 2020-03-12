@@ -1,7 +1,15 @@
 import React, { Fragment } from 'react';
+import Contacts from '../contacts/Contacts';
 
 const Home = () => {
-  return <Fragment>No place like home!</Fragment>;
+  return (
+    <div className='grid-2'>
+      <div>{/** Contacts Form */}</div>
+      <div>
+        <Contacts />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
