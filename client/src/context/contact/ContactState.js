@@ -34,7 +34,7 @@ const ContactState = props => {
         notes: 'The first rebel.'
       },
       {
-        id: 1,
+        id: 3,
         name: 'Han Solo',
         email: 'han@falcon.mil',
         phone: '333-333-3333',
