@@ -43,6 +43,47 @@ const ContactState = props => {
       }
     ]
   };
+
+  const [state, dispatch] = useReducer(ContactReducer, initialState);
+
+  /** Actions */
+  // Add contact
+  const addContact = () => {};
+
+  // Delete contact
+  const deleteContact = () => {};
+
+  // Set current contact
+  const setCurrentContact = () => {};
+
+  // Clear current contact
+  const clearCurrentContact = () => {};
+
+  // Update contact
+  const updateContact = () => {};
+
+  // Filter contacts
+  const filterContacts = () => {};
+
+  // Clear filter
+  const clearFilter = () => {};
+
+  return (
+    <ContactContext.Provider
+      value={{
+        contacts: state.contacts,
+        addContact,
+        deleteContact,
+        setCurrentContact,
+        clearCurrentContact,
+        updateContact,
+        filterContacts,
+        clearFilter
+      }}
+    >
+      {props.children}
+    </ContactContext.Provider>
+  );
 };
 
 export default ContactState;
