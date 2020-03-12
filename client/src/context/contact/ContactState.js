@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import ContactContext from './contactContext';
 import ContactReducer from './contactReducer';
 import {
@@ -18,7 +18,7 @@ const ContactState = props => {
   const initialState = {
     contacts: [
       {
-        id: 1,
+        id: '1',
         name: 'Luke Skywalker',
         email: 'luke@jedi.com',
         phone: '111-111-1111',
@@ -26,7 +26,7 @@ const ContactState = props => {
         notes: 'The last jedi'
       },
       {
-        id: 2,
+        id: '2',
         name: 'Lia Organa',
         email: 'lia@rebels.com',
         phone: '222-222-2222',
@@ -34,7 +34,7 @@ const ContactState = props => {
         notes: 'The first rebel.'
       },
       {
-        id: 3,
+        id: '3',
         name: 'Han Solo',
         email: 'han@falcon.mil',
         phone: '333-333-3333',
