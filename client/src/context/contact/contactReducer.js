@@ -18,7 +18,13 @@ export default (state, action) => {
         // because state is immutable, we need to copy, then add.
         contacts: [...state.contacts, action.payload]
       };
-
+    case DELETE_CONTACT:
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
+        )
+      };
     default:
       return state;
   }
