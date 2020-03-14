@@ -1,15 +1,32 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
-  const [contact, setContact] = useState({
+  const { addContact, current } = contactContext;
+
+  const initialState = {
     name: '',
     email: '',
     phone: '',
     type: 'personal',
     notes: ''
-  });
+  };
+
+  // Imitate componentDidMount
+  useEffect(() => {
+    if (current !== null) {
+      console.log('current is not null.', current);
+      setContact(current);
+    } else {
+      console.log('current is null.');
+
+      setContact(initialState);
+    }
+  }, [contactContext, current]); // the dependency list prevents useEffect from being called forever.
+
+  const [contact, setContact] = useState(initialState);
+  console.log('contact', contact);
 
   const { name, email, phone, type, notes } = contact;
 
@@ -22,14 +39,8 @@ const ContactForm = () => {
   // Use ContactContext to submit form fields to back-end.
   const onSubmit = e => {
     e.preventDefault();
-    contactContext.addContact(contact);
-    setContact({
-      name: '',
-      email: '',
-      phone: '',
-      type: 'personal',
-      notes: ''
-    });
+    addContact(contact);
+    setContact(initialState);
   };
 
   return (
