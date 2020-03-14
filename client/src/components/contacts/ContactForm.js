@@ -58,7 +58,7 @@ const ContactForm = () => {
       />
 
       <h4>Contact Type</h4>
-      <label for='personal'>Personal </label>
+      <label htmlFor='personal'>Personal </label>
       <input
         type='radio'
         name='type'
@@ -66,7 +66,7 @@ const ContactForm = () => {
         value='personal'
         onChange={onChange}
       />
-      <label for='professional'> Professional </label>
+      <label htmlFor='professional'> Professional </label>
       <input
         type='radio'
         name='type'
