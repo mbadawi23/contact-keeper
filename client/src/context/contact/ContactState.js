@@ -41,7 +41,8 @@ const ContactState = props => {
         type: 'personal',
         notes: 'Badass smuggler.'
       }
-    ]
+    ],
+    current: null
   };
 
   const [state, dispatch] = useReducer(ContactReducer, initialState);
@@ -59,10 +60,14 @@ const ContactState = props => {
   };
 
   // Set current contact
-  const setCurrentContact = () => {};
+  const setCurrentContact = contact => {
+    dispatch({ type: SET_CURRENT, payload: contact });
+  };
 
   // Clear current contact
-  const clearCurrentContact = () => {};
+  const clearCurrentContact = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   // Update contact
   const updateContact = () => {};
