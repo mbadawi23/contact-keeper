@@ -3,7 +3,12 @@ import ContactContext from '../../context/contact/contactContext';
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
-  const { addContact, clearCurrentContact, current } = contactContext;
+  const {
+    addContact,
+    current,
+    clearCurrentContact,
+    updateContact
+  } = contactContext;
 
   const initialState = {
     name: '',
@@ -39,12 +44,17 @@ const ContactForm = () => {
   // Use ContactContext to submit form fields to back-end.
   const onSubmit = e => {
     e.preventDefault();
-    addContact(contact);
-    setContact(initialState);
+    if (current) {
+      updateContact(contact);
+    } else {
+      addContact(contact);
+    }
+    clearAll();
   };
 
-  const onClear = e => {
+  const clearAll = () => {
     setContact(initialState);
+    clearCurrentContact();
   };
 
   return (
@@ -111,7 +121,7 @@ const ContactForm = () => {
       </div>
       {current && (
         <div>
-          <button className='btn-light btn-block' onClick={clearCurrentContact}>
+          <button className='btn-light btn-block' onClick={clearAll}>
             Clear
           </button>
         </div>
