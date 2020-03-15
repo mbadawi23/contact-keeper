@@ -45,7 +45,9 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className='text-primary'>Add Contact</h2>
+      <h2 className='text-primary'>
+        {current ? 'Update Contact' : 'Add Contact'}
+      </h2>
       <input
         type='text'
         placeholder='Name'
@@ -99,7 +101,7 @@ const ContactForm = () => {
       <div>
         <input
           type='submit'
-          value='Add Contact'
+          value={current ? 'Update Contact' : 'Add Contact'}
           className='btn btn-primary btn-block'
         />
       </div>
