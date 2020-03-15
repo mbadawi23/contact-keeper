@@ -75,6 +75,7 @@ const ContactForm = () => {
         name='type'
         id='personal'
         value='personal'
+        checked={type === 'personal'}
         onChange={onChange}
       />
       <label htmlFor='professional'> Professional </label>
@@ -83,6 +84,7 @@ const ContactForm = () => {
         name='type'
         id='professional'
         value='professional'
+        checked={type === 'professional'}
         onChange={onChange}
       />
 
